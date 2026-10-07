@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { facility, getOpenStatus, prototypeNow } from "./mockData";
 import ContactCard from "./components/ContactCard";
+import CriticalInfoSection from "./components/CriticalInfoSection";
 
 const jumps = [
   ["#book", "Book"],
@@ -12,6 +13,9 @@ const jumps = [
 export default function App() {
   const scrollerRef = useRef(null);
   const status = getOpenStatus(prototypeNow);
+  const [visitId, setVisitId] = useState(null);
+  const visit = facility.slots.find((slot) => slot.id === visitId);
+  const provider = facility.providers.find((person) => person.id === visit?.providerId);
 
   return (
     <div className="stage">
@@ -24,6 +28,14 @@ export default function App() {
             <a key={href} href={href}>{label}</a>
           ))}
         </nav>
+        {visit && provider && (
+          <p className="banner" role="status">
+            Visit requested for {visit.when} with {provider.name}. Nothing is sent from this prototype.
+          </p>
+        )}
+        <main>
+          <CriticalInfoSection facility={facility} visitId={visitId} onBook={setVisitId} />
+        </main>
       </div>
     </div>
   );
