@@ -4,6 +4,8 @@ import ContactCard from "./components/ContactCard";
 import CriticalInfoSection from "./components/CriticalInfoSection";
 import ServicesSection from "./components/ServicesSection";
 import LogisticsSection from "./components/LogisticsSection";
+import BuildingPhoto from "./components/BuildingPhoto";
+import RelatedLocations from "./components/RelatedLocations";
 
 const jumps = [
   ["#book", "Book"],
@@ -39,7 +41,12 @@ export default function App() {
           <CriticalInfoSection facility={facility} visitId={visitId} onBook={setVisitId} />
           <ServicesSection facility={facility} />
           <LogisticsSection items={facility.logistics} />
+          <BuildingPhoto />
+          <RelatedLocations locations={facility.related} />
         </main>
+        <footer className="fineprint">
+          Sample location page. Office status is pinned to Wednesday, Oct 7, 2026, 10:30 a.m.
+        </footer>
       </div>
     </div>
   );
