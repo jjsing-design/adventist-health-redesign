@@ -3,6 +3,7 @@ import { facility, getOpenStatus, prototypeNow } from "./mockData";
 import ContactCard from "./components/ContactCard";
 import CriticalInfoSection from "./components/CriticalInfoSection";
 import ServicesSection from "./components/ServicesSection";
+import LogisticsSection from "./components/LogisticsSection";
 
 const jumps = [
   ["#book", "Book"],
@@ -37,6 +38,7 @@ export default function App() {
         <main>
           <CriticalInfoSection facility={facility} visitId={visitId} onBook={setVisitId} />
           <ServicesSection facility={facility} />
+          <LogisticsSection items={facility.logistics} />
         </main>
       </div>
     </div>
