@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { facility, getOpenStatus, prototypeNow } from "./mockData";
 import ContactCard from "./components/ContactCard";
 import CriticalInfoSection from "./components/CriticalInfoSection";
+import ServicesSection from "./components/ServicesSection";
 
 const jumps = [
   ["#book", "Book"],
@@ -35,6 +36,7 @@ export default function App() {
         )}
         <main>
           <CriticalInfoSection facility={facility} visitId={visitId} onBook={setVisitId} />
+          <ServicesSection facility={facility} />
         </main>
       </div>
     </div>
