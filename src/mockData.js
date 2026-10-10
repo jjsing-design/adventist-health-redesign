@@ -6,19 +6,21 @@ export function getOpenStatus(date = prototypeNow) {
   const weekday = day >= 1 && day <= 5;
 
   if (weekday && minutes >= 8 * 60 && minutes < 17 * 60) {
-    return { open: true, text: "Open • Closes at 5 p.m." };
+    return { open: true, label: "Open:", detail: "Closes at 5 p.m." };
   }
 
   const opensMonday = day === 0 || day === 6 || (day === 5 && minutes >= 17 * 60);
   return {
     open: false,
-    text: opensMonday ? "Closed • Opens Monday at 8 a.m." : "Closed • Opens at 8 a.m.",
+    label: "Closed:",
+    detail: opensMonday ? "Opens Monday at 8 a.m." : "Opens at 8 a.m.",
   };
 }
 
 export const facility = {
-  name: "Adventist Health Primary Care",
-  network: "A service of Adventist Health Physicians Network",
+  place: "Atascadero",
+  service: "Primary Care",
+  network: "Part of Adventist Health Physicians Network",
   phone: "805-395-3277",
   phoneHref: "tel:+18053953277",
   street: "6955 El Camino Real, Suite 200",
@@ -35,22 +37,23 @@ export const facility = {
   newPatientNote: "New patients are being scheduled within the same week.",
   insurance: ["Aetna", "Blue Shield", "Cigna", "United Healthcare"],
   insuranceNote: "Call to confirm your specific plan before the visit.",
+  intro:
+    "We offer comprehensive primary care services to support your health and well-being. From sick visits and routine exams to managing or preventing chronic conditions like diabetes, asthma, or hypertension, our team is here to help you feel your best and enjoy life to the fullest.",
   providers: [
-    { id: "chen", name: "Maya Chen, MD", role: "Family medicine", initials: "MC" },
-    { id: "okonkwo", name: "James Okonkwo, MD", role: "Internal medicine", initials: "JO" },
-    { id: "shah", name: "Priya Shah, NP", role: "Primary care", initials: "PS" },
-    { id: "vargas", name: "Elena Vargas, DO", role: "Family medicine", initials: "EV" },
+    { id: "bik", name: "Lymar Bik, MD", role: "Internal medicine", initials: "LB" },
+    { id: "viera", name: "Kristen Viera, PA-C", role: "Primary care", initials: "KV" },
+    { id: "flores", name: "Maria “Angel” Flores, NP", role: "Internal medicine", initials: "MF" },
   ],
   slots: [
-    { id: "today", when: "Today · 2:40 p.m.", providerId: "chen" },
-    { id: "thu", when: "Thu, Oct 8 · 9:15 a.m.", providerId: "shah" },
-    { id: "fri", when: "Fri, Oct 9 · 11:00 a.m.", providerId: "okonkwo" },
+    { id: "today", when: "Today · 2:40 p.m.", providerId: "bik" },
+    { id: "thu", when: "Thu, Oct 8 · 9:15 a.m.", providerId: "viera" },
+    { id: "fri", when: "Fri, Oct 9 · 11:00 a.m.", providerId: "flores" },
   ],
-  commonServices: ["Preventive care", "Routine check-ups", "Immunizations & vaccinations"],
+  commonServices: ["Preventive care", "Routine check-ups", "Immunizations and vaccinations"],
   services: [
     "Diabetes screening",
     "Hypertension screening",
-    "Immunizations & vaccinations",
+    "Immunizations and vaccinations",
     "Medication management",
     "Mental health counseling",
     "Minor injuries",
@@ -97,25 +100,25 @@ export const facility = {
       id: "templeton",
       city: "Templeton",
       distance: "6 mi",
-      name: "Adventist Health Twin Cities",
-      why: "Hospital campus for imaging, lab, and specialty care this clinic refers out.",
-      href: "https://www.google.com/maps/search/?api=1&query=Adventist+Health+Twin+Cities+Templeton+CA",
+      name: "Adventist Health Primary Care",
+      why: "959 Las Tablas Road, Suite B-3. Same-day primary care closer to Templeton.",
+      href: "https://www.google.com/maps/search/?api=1&query=959+Las+Tablas+Road+Suite+B-3+Templeton+CA",
     },
     {
       id: "paso",
       city: "Paso Robles",
       distance: "13 mi",
       name: "Adventist Health Primary Care",
-      why: "Another primary care office if you live north of Atascadero or need an earlier opening.",
-      href: "https://www.google.com/maps/search/?api=1&query=Adventist+Health+Paso+Robles+CA",
+      why: "2727 Buena Vista Drive, Suite 201. Another primary care office north of Atascadero.",
+      href: "https://www.google.com/maps/search/?api=1&query=2727+Buena+Vista+Drive+Suite+201+Paso+Robles+CA",
     },
     {
       id: "slo",
       city: "San Luis Obispo",
       distance: "17 mi",
-      name: "Adventist Health Sierra Vista",
-      why: "Full hospital with an emergency department for problems this clinic cannot treat.",
-      href: "https://www.google.com/maps/search/?api=1&query=Adventist+Health+Sierra+Vista+San+Luis+Obispo",
+      name: "Adventist Health Primary Care",
+      why: "892 Aerovista Place, Suite 130. Primary care closer to San Luis Obispo.",
+      href: "https://www.google.com/maps/search/?api=1&query=892+Aerovista+Place+Suite+130+San+Luis+Obispo+CA",
     },
   ],
 };

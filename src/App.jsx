@@ -27,6 +27,7 @@ export default function App() {
       <div className="device" ref={scrollerRef}>
         <a className="skip" href="#book">Skip to booking</a>
         <ContactCard facility={facility} status={status} scrollerRef={scrollerRef} />
+        <BuildingPhoto facility={facility} />
         <nav className="jumps" aria-label="On this page">
           {jumps.map(([href, label]) => (
             <a key={href} href={href}>{label}</a>
@@ -41,7 +42,6 @@ export default function App() {
           <CriticalInfoSection facility={facility} visitId={visitId} onBook={setVisitId} />
           <ServicesSection facility={facility} />
           <LogisticsSection items={facility.logistics} />
-          <BuildingPhoto />
           <RelatedLocations locations={facility.related} />
         </main>
         <footer className="fineprint">

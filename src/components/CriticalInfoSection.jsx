@@ -25,7 +25,7 @@ export default function CriticalInfoSection({ facility, visitId, onBook }) {
       </ul>
       <p className="support">{facility.insuranceNote}</p>
 
-      <h3>Providers</h3>
+      <h3>Our team</h3>
       <ul className="providers">
         {facility.providers.map((provider) => (
           <li key={provider.id}>
