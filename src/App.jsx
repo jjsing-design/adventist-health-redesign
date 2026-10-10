@@ -3,6 +3,7 @@ import { facility, getOpenStatus, prototypeNow } from "./mockData";
 import ContactCard from "./components/ContactCard";
 import CriticalInfoSection from "./components/CriticalInfoSection";
 import ServicesSection from "./components/ServicesSection";
+import EmergencyAndScopeSection from "./components/EmergencyAndScopeSection";
 import LogisticsSection from "./components/LogisticsSection";
 import BuildingPhoto from "./components/BuildingPhoto";
 import RelatedLocations from "./components/RelatedLocations";
@@ -41,6 +42,7 @@ export default function App() {
         <main>
           <CriticalInfoSection facility={facility} visitId={visitId} onBook={setVisitId} />
           <ServicesSection facility={facility} />
+          <EmergencyAndScopeSection facility={facility} />
           <LogisticsSection items={facility.logistics} />
           <RelatedLocations locations={facility.related} />
         </main>

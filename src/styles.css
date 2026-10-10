@@ -111,7 +111,16 @@ h1 {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.12;
-  text-wrap: balance;
+}
+
+.service-line {
+  display: block;
+  margin-top: 2px;
+  color: var(--teal);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .network, .address, .hours, .support, .fineprint { margin: 0; }
@@ -470,6 +479,57 @@ h3 {
   height: 22px;
   color: var(--open);
   flex: none;
+}
+
+.popular-mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex: none;
+}
+
+.services li:has(.popular-mark) {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.emergency {
+  margin: 0 0 16px;
+  padding: 12px 12px 4px;
+  border-radius: 12px;
+  background: #fff6f3;
+  border: 1px solid #f3d2c6;
+}
+
+.care-lead {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.emergency ul,
+.scope-list {
+  margin: 0 0 10px;
+  padding-left: 1.15rem;
+  color: var(--muted);
+}
+
+.emergency li,
+.scope-list li {
+  margin: 4px 0;
+}
+
+.emergency-note {
+  margin: 0 0 12px;
+  color: var(--closed);
+  font-weight: 700;
+}
+
+.care-cta {
+  width: 100%;
+  margin-top: 14px;
+  white-space: normal;
 }
 
 .logistics-item + .logistics-item { border-top: 1px solid var(--line); }

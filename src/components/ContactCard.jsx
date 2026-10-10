@@ -106,8 +106,7 @@ export default function ContactCard({ facility, status, scrollerRef }) {
           <img className="logo" src="/ah-logo.svg" alt="Adventist Health" />
           <h1>
             {facility.place}
-            <br />
-            {facility.service}
+            <span className="service-line">{facility.service}</span>
           </h1>
           <p className="network">{facility.network}</p>
           <Actions facility={facility} />

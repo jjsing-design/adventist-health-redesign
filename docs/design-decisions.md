@@ -39,3 +39,31 @@ Office status is computed from hours, but "now" is fixed at Wednesday, Oct 7, 20
 ## Decision 6: Photo and nearby sites stay secondary
 
 The building illustration sits after visit details. Nearby clinics (Templeton, Paso Robles, San Luis Obispo) include distance and why you would go there, so they do not bury the Atascadero office.
+
+## Decision 7: Services list — visual hierarchy without a second list
+
+**Observation:** A “Most common” box repeated three services that also appeared in the full list.
+
+**Problem:** The repeat made it unclear which services were the core offering.
+
+**Solution:** One list. Preventive care, routine check-ups, and immunizations are marked `isPopular` and shown with a blue circle. The other six keep the green check.
+
+**Benefit:** One source of truth, a clear hierarchy, and less clutter.
+
+**Trade-off:** Popularity is read from the icon while scanning the list, not from a separate label.
+
+## Decision 8: Emergency guidance and scope of care
+
+**Observation:** Earlier copy told people with chest pain or trouble breathing to drive to Adventist Health Twin Cities in Templeton, and it mixed that advice with what this clinic treats.
+
+**Problem:** That is unsafe, points Atascadero patients at the wrong place, and blurs primary care with emergency care.
+
+**Solution:** A “When you need care” section. Medical emergencies say to call 911 and not to drive. Scope of care lists what this office handles, including specialist referrals.
+
+**Benefit:** The emergency instruction is direct. Expectations for this clinic are separate from 911.
+
+**Trade-off:** The section is longer. Bullets and two headings keep it scannable.
+
+## Decision 9: Heading names the place, then the service
+
+The logo already says Adventist Health. The heading is “Atascadero” with “PRIMARY CARE” under it, and the line below is “A service of Adventist Health Physicians Network.” Related locations can then read as other places, not another copy of this title.
