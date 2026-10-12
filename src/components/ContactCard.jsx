@@ -31,6 +31,54 @@ function ClockIcon() {
   );
 }
 
+function AccountMenu({ open, setOpen, loggedOut, onLogout }) {
+  const rootRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const onPointer = (event) => {
+      if (!rootRef.current?.contains(event.target)) setOpen(false);
+    };
+    const onKey = (event) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open, setOpen]);
+
+  return (
+    <div className="account-menu" ref={rootRef}>
+      <button
+        type="button"
+        className="menu-btn"
+        aria-expanded={open}
+        aria-controls="account-panel"
+        aria-label="Menu"
+        onClick={() => setOpen((value) => !value)}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        </svg>
+      </button>
+      {open && (
+        <div className="account-panel" id="account-panel" role="menu" aria-label="Account">
+          {loggedOut ? (
+            <p className="logout-note">You are logged out.</p>
+          ) : (
+            <button type="button" role="menuitem" onClick={onLogout}>
+              Log out
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Actions({ facility, compact = false }) {
   return (
     <div className={compact ? "actions actions-compact" : "actions"}>
@@ -50,6 +98,8 @@ export default function ContactCard({ facility, status, scrollerRef }) {
   const cardRef = useRef(null);
   const [holidaysOpen, setHolidaysOpen] = useState(false);
   const [dockOn, setDockOn] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [loggedOut, setLoggedOut] = useState(false);
   const hasHolidays = facility.specialHours.length > 0;
 
   useEffect(() => {
@@ -92,23 +142,49 @@ export default function ContactCard({ facility, status, scrollerRef }) {
       {dockOn && (
         <div className="dock show">
           <div className="dock-bar">
-            <p className="hours hours-dock">
-              <span className={`status-label ${status.open ? "is-open" : "is-closed"}`}>{status.label}</span>{" "}
-              <span className="status-detail">{status.detail}</span>
-            </p>
+            <div className="dock-head">
+              <p className="hours hours-dock">
+                <span className={`status-label ${status.open ? "is-open" : "is-closed"}`}>{status.label}</span>{" "}
+                <span className="status-detail">{status.detail}</span>
+              </p>
+              <AccountMenu
+                open={menuOpen}
+                setOpen={setMenuOpen}
+                loggedOut={loggedOut}
+                onLogout={() => {
+                  setLoggedOut(true);
+                  setMenuOpen(false);
+                }}
+              />
+            </div>
             <Actions facility={facility} compact />
+            {loggedOut && <p className="logout-banner" role="status">You are logged out.</p>}
           </div>
         </div>
       )}
 
       <header className="contact" ref={cardRef}>
         <div className="contact-inner">
-          <img className="logo" src="/ah-logo.svg" alt="Adventist Health" />
+          <div className="brand-row">
+            <img className="logo" src="/ah-logo.svg" alt="Adventist Health" />
+            {!dockOn && (
+              <AccountMenu
+                open={menuOpen}
+                setOpen={setMenuOpen}
+                loggedOut={loggedOut}
+                onLogout={() => {
+                  setLoggedOut(true);
+                  setMenuOpen(false);
+                }}
+              />
+            )}
+          </div>
           <h1>
             {facility.place}
             <span className="service-line">{facility.service}</span>
           </h1>
           <p className="network">{facility.network}</p>
+          {loggedOut && !dockOn && <p className="logout-banner" role="status">You are logged out.</p>}
           <Actions facility={facility} />
         </div>
 

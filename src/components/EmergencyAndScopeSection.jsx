@@ -16,13 +16,6 @@ export default function EmergencyAndScopeSection({ facility }) {
         <p className="emergency-note">{emergency.note}</p>
       </div>
 
-      <h3>{scope.title}</h3>
-      <p className="care-lead">{scope.lead}</p>
-      <ul className="scope-list">
-        {scope.items.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
       <p className="support">{scope.note}</p>
       <a className="btn btn-secondary care-cta" href="#book">
         Need a specialist? Ask about referrals.

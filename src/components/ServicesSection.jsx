@@ -5,15 +5,11 @@ export default function ServicesSection({ facility }) {
       <p className="lede">{facility.intro}</p>
       <ul className="services">
         {facility.services.map((service) => (
-          <li key={service.name}>
-            {service.isPopular ? (
-              <span className="popular-mark" aria-hidden="true" />
-            ) : (
-              <svg viewBox="0 0 20 20" aria-hidden="true" className="check">
-                <circle cx="10" cy="10" r="9" fill="currentColor" />
-                <path fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M6 10.2 8.7 13l5.3-6.2" />
-              </svg>
-            )}
+          <li key={service.name} className={service.isPopular ? "is-popular" : undefined}>
+            <svg viewBox="0 0 20 20" aria-hidden="true" className="check">
+              <circle cx="10" cy="10" r="9" fill="currentColor" />
+              <path fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M6 10.2 8.7 13l5.3-6.2" />
+            </svg>
             <span>
               {service.isPopular && <span className="sr-only">Most common: </span>}
               {service.name}

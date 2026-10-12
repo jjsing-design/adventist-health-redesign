@@ -96,12 +96,89 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .contact-inner { padding: 16px 16px 14px; }
 
+.brand-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
 .logo {
   display: block;
   width: 168px;
   height: auto;
-  margin: 0 0 14px;
+  margin: 0;
 }
+
+.account-menu { position: relative; flex: none; }
+
+.menu-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: -8px -8px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink);
+}
+
+.menu-btn svg { width: 24px; height: 24px; }
+
+.account-panel {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 8;
+  min-width: 168px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.account-panel button {
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+}
+
+.account-panel button:hover { background: var(--teal-soft); }
+
+.logout-note {
+  margin: 0;
+  padding: 10px 12px;
+  color: var(--ink);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.logout-banner {
+  margin: 10px 0 0;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.dock-bar .logout-banner { margin: 0; font-size: 0.95rem; }
+
+.dock-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dock-head .menu-btn { margin: 0; }
 
 h1, h2, h3 { font-weight: 600; color: var(--ink); }
 
@@ -481,15 +558,7 @@ h3 {
   flex: none;
 }
 
-.popular-mark {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--teal);
-  flex: none;
-}
-
-.services li:has(.popular-mark) {
+.services li.is-popular {
   font-weight: 700;
   color: var(--ink);
 }
@@ -508,15 +577,13 @@ h3 {
   font-weight: 700;
 }
 
-.emergency ul,
-.scope-list {
+.emergency ul {
   margin: 0 0 10px;
   padding-left: 1.15rem;
   color: var(--muted);
 }
 
-.emergency li,
-.scope-list li {
+.emergency li {
   margin: 4px 0;
 }
 

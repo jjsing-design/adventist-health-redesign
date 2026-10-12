@@ -73,16 +73,6 @@ export const facility = {
     note: "Do not delay. Do not attempt to drive yourself. Emergency services will direct you to the nearest appropriate facility.",
   },
   scope: {
-    title: "Our scope of care",
-    lead: "This office provides:",
-    items: [
-      "Preventive screenings and vaccines",
-      "Management of chronic conditions (diabetes, hypertension, asthma)",
-      "Acute care (minor injuries, infections, sick visits)",
-      "Medication management",
-      "Mental health counseling and referrals",
-      "Specialist referrals when needed",
-    ],
     note: "For care outside our scope, we can refer you to specialists in the Adventist Health network or your insurance provider's network.",
   },
   logistics: [
